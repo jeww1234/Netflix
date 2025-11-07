@@ -2,7 +2,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes } from "react-router-dom";
 import AppLayout from "./layout/AppLayout";
-import Homepage from "./Pages/Homepage/Homepage";
+import Homepage from "./Pages/HomePage/HomePage";
 import MoviesPage from "./Pages/MoviesPage/MoviesPage";
 import MovieDetailPage from "./Pages/MovieDetailPage/MovieDetailPage";
 import NotFoundPage from "./Pages/NotFoundPage/NotFoundPage";
