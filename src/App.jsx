@@ -30,7 +30,7 @@ function App() {
             <Route path=":id" element={<SeriesDetailPage />} />
           </Route>
 
-          {/* 애니메이션? */}
+          {/* 애니메이션?? */}
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />
