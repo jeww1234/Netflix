@@ -2,7 +2,7 @@
   height: 85vh;
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat
+  background-repeat: no-repeat;
 }
 
 .banner::before {
@@ -22,15 +22,51 @@
   padding: 8rem 2rem 0 2rem;
   margin-left: 8rem;
 }
-.banner-text-area h1{
-    font-size: 5rem;
-    color: red;
+.banner-text-area h1 {
+  font-size: 5rem;
+  color: red;
 }
-.banner-text-area p{
-    font-size: 1rem;
-    padding: 0 10px;
+.banner-text-area p {
+  font-size: 1rem;
+  padding: 0 10px;
 }
 
-.banner-text-area *{
-    z-index: 2;
+.banner-text-area * {
+  z-index: 2;
+}
+
+@media screen and (max-width: 768px) {
+  .banner-text-area {
+    max-width: 60%;
+    padding: 6rem 1rem 0 1rem;
+    margin-left: 4rem;
+  }
+  .banner-text-area h1 {
+    font-size: 3rem;
+    padding: 0 10px;
+  }
+  .banner-text-area p {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .banner {
+  height:50vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+  .banner-text-area {
+    max-width: 60%;
+    padding: 3rem 1rem 0 1rem;
+    margin-left: 1rem;
+  }
+  .banner-text-area h1 {
+    font-size: 1.5rem;
+    padding: 0 10px;
+  }
+  .banner-text-area p {
+    font-size: 0.4rem;
+  }
 }
