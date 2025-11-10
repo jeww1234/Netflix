@@ -3,6 +3,7 @@ import "./HomePage.style.css"
 import Banner from "./components/Banner/Banner"
 import PopularMoveSlide from './components/PopularMoveSlide/PopularMoveSlide'
 import TopRatedMovieSlide from './components/TopRatedMovieSlide/TopRatedMovieSlide'
+import UpcomingMoveSlide from './components/UpcomingMoveSlide/UpcomingMoveSlide'
 
 //베너 파퓰러 무비를 들고와서 첫 번째 아이템의 이미지를 보여주자
 //popular
@@ -16,6 +17,7 @@ const Homepage = () => {
       <Banner />
       <PopularMoveSlide />
       <TopRatedMovieSlide />
+      <UpcomingMoveSlide />
     </div>
   )
 }

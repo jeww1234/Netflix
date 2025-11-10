@@ -1,12 +1,12 @@
 import React from "react";
-import { useTopRatedMoviesQuery } from "../../../../hooks/useTopRatedMovie";
+import { useUpcomingMoviesQuery } from "../../../../hooks/useUpcomingMovies";
 import { Alert } from "bootstrap";
 import "react-multi-carousel/lib/styles.css";
 import MovieSlider from "../../../../Common/MovieSlider/MovieSlider";
 import { responsive } from "../../../../constants/responsive";
 
-const TopRatedMovieSlide = () => {
-  const { data, isLoading, isError, error } = useTopRatedMoviesQuery();
+const UpcomingMoveSlide = () => {
+  const { data, isLoading, isError, error } = useUpcomingMoviesQuery();
   console.log(data);
 
   if (isLoading) {
@@ -18,7 +18,7 @@ const TopRatedMovieSlide = () => {
   return (
     <div>
       <MovieSlider
-        title="TopRatedMovies"
+        title="UpcomingMovies"
         movies={data.results}
         responsive={responsive}
       />
@@ -26,4 +26,4 @@ const TopRatedMovieSlide = () => {
   );
 };
 
-export default TopRatedMovieSlide;
+export default UpcomingMoveSlide;

@@ -1,8 +1,0 @@
-.carousel-container{
-    overflow: hidden;
-    max-height: 600px;
-}
-.carousel-container > ul > li{
-    display: flex;
-    justify-content: center;
-}
