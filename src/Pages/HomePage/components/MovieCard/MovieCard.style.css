@@ -20,15 +20,32 @@
   flex-direction: column;
   justify-content: flex-end;
 }
-.overlay h1{
-    font-size: 1.6rem;
+.overlay h1 {
+  font-size: 1.6rem;
 }
 
-.overlay:hover{
-    opacity: 1;
+.overlay:hover {
+  opacity: 1;
 }
 
-.movie-card:hover{
-    transform: scale(1.1) translateZ(10px);
-    z-index: 3;
+.movie-card:hover {
+  transform: scale(1.1) translateZ(10px);
+  z-index: 3;
+}
+
+@media screen and (max-width: 768px) {
+  .movie-card {
+    width: 200px;
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .movie-card {
+    width: 60vw;
+    height: clamp(300px, 100vw, 500px);
+    background-size: cover;
+    background-repeat: no-repeat;
+    aspect-ratio: 16 / 8;
+  }
 }
