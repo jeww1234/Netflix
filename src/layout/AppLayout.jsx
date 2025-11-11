@@ -36,7 +36,7 @@ const AppLayout = () => {
           <Navbar.Collapse id="navbarScroll">
             <Nav
               className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: "100px" }}
+              style={{ Height: "100%" }}
               navbarScroll
             >
               <Link to="/" className="nav-link">
