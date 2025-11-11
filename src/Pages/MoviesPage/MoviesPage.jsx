@@ -62,6 +62,7 @@ const MoviesPage = () => {
             ))}
           </Row>
         </Col>
+        {/* 모바일 버전 수정필요! */}
         <ReactPaginate
           nextLabel="next >"
           onPageChange={handlePageClick}
