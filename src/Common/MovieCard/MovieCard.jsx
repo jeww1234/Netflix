@@ -29,8 +29,8 @@ const MovieCard = ({ movie }) => {
       <div className="overlay">
         <h1>{movie.title}</h1>
         <div>
-          {showGenre(movie.genre_ids).map((item) => (
-            <div className="pe-1" style={{ display: "inline" }}>
+          {showGenre(movie.genre_ids).map((item, id) => (
+            <div key={id} className="pe-1" style={{ display: "inline" }}>
               <Badge bg="danger">{item}</Badge>
             </div>
           ))}
