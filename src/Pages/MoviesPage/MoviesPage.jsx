@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./MoviesPage.style.css";
 import { useSearchMovieQuery } from "../../hooks/useSearchMovie";
 import { useSearchParams } from "react-router-dom";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import MovieCard from "../../Common/MovieCard/MovieCard";
 import ReactPaginate from "react-paginate";
 import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
@@ -32,19 +32,15 @@ const MoviesPage = () => {
     console.log("genre", genre);
   };
 
-  if (isLoading) {
-    <h1>Loading.....</h1>;
-  }
-  if (isError) {
-    <Alert variant="danger">{error.message}</Alert>;
-  }
-
   const { data: genreData } = useMovieGenreQuery();
-  console.log("gggg", genreData);
+
+  if (isLoading) return <h1>Loading.....</h1>;
+  if (isError) return <Alert variant="danger">{error.message}</Alert>;
 
   const handleGenre = (event) => {
     setGenre(event.target.value);
-    console.log("Gggg", genre);
+    setPage(1);
+    console.log("Gggg", event.target.genre);
   };
 
   return (
@@ -56,7 +52,9 @@ const MoviesPage = () => {
             className="d-flex justify-content-center mb-4"
             onChange={handleGenre}
           >
-            <option>장르를 선택하세요</option>
+            <option disabled="true" selected>
+              장르를 선택하세요
+            </option>
             {genreData?.map((genre, index) => (
               <option value={genre.id} key={index}>
                 {genre.name}
@@ -72,11 +70,17 @@ const MoviesPage = () => {
         </Col>
         <Col lg={9} xs={12}>
           <Row>
-            {data?.results.map((movie, index) => (
-              <Col lg={4} sm={6} xs={12} key={index} className="pe-2 pb-4 moviePage-card">
-                {<MovieCard movie={movie}/>}
+            {data?.data?.results.map((movie, index) => (
+              <Col
+                lg={4}
+                sm={6}
+                xs={12}
+                key={index}
+                className="pe-2 pb-4 moviePage-card"
+              >
+                {<MovieCard movie={movie} />}
               </Col>
-            ))} 
+            ))}
           </Row>
           {/* 모바일 버전 수정필요! */}
           <div className="d-flex justify-content-center align-items-center p-5">
