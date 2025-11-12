@@ -10,7 +10,7 @@ const MovieSlider = ({ movies, title, responsive }) => {
 
   return (
     <div>
-      <h3 className="text-white mt-5 ps-3">{title}</h3>
+      <h3 className="text-white my-4 ps-3">{title}</h3>
       <Carousel
         infinite={true}
         centerMode={!isMobile}

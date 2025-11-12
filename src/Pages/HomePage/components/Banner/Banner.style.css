@@ -69,4 +69,7 @@
   .banner-text-area p {
     font-size: 0.4rem;
   }
+  .banner::before {
+  height: 50vh;
+}
 }

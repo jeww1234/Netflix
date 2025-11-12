@@ -1,3 +1,29 @@
-.pagination{
-    margin-bottom: 0;
+.pagination {
+  margin-bottom: 0;
+}
+
+.moviePage-card {
+  height: 500px;
+}
+
+@media screen and (max-width: 992px) {
+  .moviePage-card {
+    height: 550px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .moviePage-card {
+    height: 300px;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .moviePage-card {
+    display: flex;
+    justify-content: center;
+    height: 520px;
+    margin: 1rem 0;
+  }
 }

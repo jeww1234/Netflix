@@ -50,10 +50,10 @@ const MoviesPage = () => {
   return (
     <Container>
       <Row>
-        <Col lg={2} xs={12}>
+        <Col lg={3} xs={12}>
           <Form.Select
             aria-label="장르 선택"
-            className="d-flex justify-content-center"
+            className="d-flex justify-content-center mb-4"
             onChange={handleGenre}
           >
             <option>장르를 선택하세요</option>
@@ -70,13 +70,13 @@ const MoviesPage = () => {
           변경된 url로 다시 패치
            */}
         </Col>
-        <Col lg={10} xs={12}>
+        <Col lg={9} xs={12}>
           <Row>
             {data?.results.map((movie, index) => (
-              <Col lg={3} xs={12} key={index} className="px-4 pb-4">
+              <Col lg={4} sm={6} xs={12} key={index} className="pe-2 pb-4 moviePage-card">
                 {<MovieCard movie={movie}/>}
               </Col>
-            ))}
+            ))} 
           </Row>
           {/* 모바일 버전 수정필요! */}
           <div className="d-flex justify-content-center align-items-center p-5">
@@ -84,7 +84,7 @@ const MoviesPage = () => {
               nextLabel="next >"
               onPageChange={handlePageClick}
               pageRangeDisplayed={3}
-              marginPagesDisplayed={2}
+              marginPagesDisplayed={1}
               pageCount={data?.total_pages} //전체 페이지
               previousLabel="< previous"
               pageClassName="page-item"
