@@ -5,7 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import MovieCard from "../../Common/MovieCard/MovieCard";
 import ReactPaginate from "react-paginate";
-
+import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
 //네브바 클릭(키워드x -> popularmovie)
 //서치(키워드와 관련되 키워드)
 
@@ -17,10 +17,12 @@ const MoviesPage = () => {
   const [query, setQuery] = useSearchParams();
   const [page, setPage] = useState(1);
   const keyword = query.get("q");
+  const [genre, setGenre] = useState("");
 
   const { data, isLoading, isError, error } = useSearchMovieQuery({
     keyword,
     page,
+    genre,
   });
 
   console.log(data, isLoading, isError, error);
@@ -36,15 +38,29 @@ const MoviesPage = () => {
     <Alert variant="danger">{error.message}</Alert>;
   }
 
+  const { data: genreData } = useMovieGenreQuery();
+  console.log("gggg", genreData);
+
+  const handleGenre = (event) => {
+    setGenre(event.target.value);
+    console.log("Gggg",genre)
+  };
+
   return (
     <Container>
       <Row>
         <Col lg={4} xs={12}>
-          <Form.Select aria-label="장르 선택" className="d-flex justify-content-center">
+          <Form.Select
+            aria-label="장르 선택"
+            className="d-flex justify-content-center"
+            onChange={handleGenre}
+          >
             <option>장르를 선택하세요</option>
-            <option value="action">액션</option>
-            <option value="comedy">코미디</option>
-            <option value="drama">드라마</option>
+            {genreData?.map((genre, index) => (
+              <option value={genre.id} key={index}>
+                {genre.name}
+              </option>
+            ))}
           </Form.Select>
           {/* tmdb에서 제공하는 장르를를 map한다
           장르의 상태를 저장하는 스테이트 생성
