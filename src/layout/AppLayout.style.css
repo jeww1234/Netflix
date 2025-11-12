@@ -1,3 +1,6 @@
 .nav-link{
     color: white;
 }
+.nav-area{
+    z-index: 4;
+}

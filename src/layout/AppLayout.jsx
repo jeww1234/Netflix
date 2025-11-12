@@ -20,8 +20,8 @@ const AppLayout = () => {
   };
 
   return (
-    <div>
-      <Navbar expand="lg" className="bg-black" variant="dark">
+    <div className="position-relative">
+      <Navbar expand="lg" className="bg-black position-fixed w-100 nav-area" variant="dark">
         <Container fluid>
           <Navbar.Brand>
             <img
@@ -32,7 +32,7 @@ const AppLayout = () => {
               className="d-inline-block align-top"
             />
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Toggle aria-controls="navbarScroll"/>
           <Navbar.Collapse id="navbarScroll">
             <Nav
               className="me-auto my-2 my-lg-0"

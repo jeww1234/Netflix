@@ -49,7 +49,7 @@ const MoviesPage = () => {
 
   return (
     <Container>
-      <Row>
+      <Row className="moviePage-area">
         <Col lg={3} xs={12}>
           <Form.Select
             aria-label="장르 선택"

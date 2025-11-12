@@ -10,7 +10,7 @@
   background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
   position: absolute;
   left: 0;
-  height: 90vh;
+  height: 85vh;
   width: 100%;
 }
 .banner-text-area {
@@ -52,11 +52,11 @@
 
 @media screen and (max-width: 576px) {
   .banner {
-  height:50vh;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+    height: 50vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
   .banner-text-area {
     max-width: 60%;
     padding: 3rem 1rem 0 1rem;
@@ -70,6 +70,6 @@
     font-size: 0.4rem;
   }
   .banner::before {
-  height: 50vh;
-}
+    height: 50vh;
+  }
 }

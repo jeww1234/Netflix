@@ -4,6 +4,7 @@
   background-size: cover;
   cursor: pointer;
   transition: 0.5s;
+  border: 2px solid rgb(229, 9, 20);
 }
 
 .overlay {
@@ -29,7 +30,7 @@
 }
 
 .movie-card:hover {
-  transform: scale(1.1) translateZ(10px);
+  transform: scale(1.06) translateZ(10px);
   z-index: 3;
 }
 
