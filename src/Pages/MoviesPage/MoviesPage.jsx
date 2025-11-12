@@ -29,6 +29,7 @@ const MoviesPage = () => {
 
   const handlePageClick = ({ selected }) => {
     setPage(selected + 1);
+    console.log("genre", genre);
   };
 
   if (isLoading) {
@@ -43,13 +44,13 @@ const MoviesPage = () => {
 
   const handleGenre = (event) => {
     setGenre(event.target.value);
-    console.log("Gggg",genre)
+    console.log("Gggg", genre);
   };
 
   return (
     <Container>
       <Row>
-        <Col lg={4} xs={12}>
+        <Col lg={2} xs={12}>
           <Form.Select
             aria-label="장르 선택"
             className="d-flex justify-content-center"
@@ -69,37 +70,39 @@ const MoviesPage = () => {
           변경된 url로 다시 패치
            */}
         </Col>
-        <Col lg={8} xs={12}>
+        <Col lg={10} xs={12}>
           <Row>
             {data?.results.map((movie, index) => (
-              <Col lg={4} xs={12} key={index}>
-                {<MovieCard movie={movie} />}
+              <Col lg={3} xs={12} key={index} className="px-4 pb-4">
+                {<MovieCard movie={movie}/>}
               </Col>
             ))}
           </Row>
+          {/* 모바일 버전 수정필요! */}
+          <div className="d-flex justify-content-center align-items-center p-5">
+            <ReactPaginate
+              nextLabel="next >"
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={3}
+              marginPagesDisplayed={2}
+              pageCount={data?.total_pages} //전체 페이지
+              previousLabel="< previous"
+              pageClassName="page-item"
+              pageLinkClassName="page-link"
+              previousClassName="page-item"
+              previousLinkClassName="page-link"
+              nextClassName="page-item"
+              nextLinkClassName="page-link"
+              breakLabel="..."
+              breakClassName="page-item"
+              breakLinkClassName="page-link"
+              containerClassName="pagination"
+              activeClassName="active"
+              renderOnZeroPageCount={null}
+              forcePage={page - 1}
+            />
+          </div>
         </Col>
-        {/* 모바일 버전 수정필요! */}
-        <ReactPaginate
-          nextLabel="next >"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={3}
-          marginPagesDisplayed={2}
-          pageCount={data?.total_pages} //전체 페이지
-          previousLabel="< previous"
-          pageClassName="page-item"
-          pageLinkClassName="page-link"
-          previousClassName="page-item"
-          previousLinkClassName="page-link"
-          nextClassName="page-item"
-          nextLinkClassName="page-link"
-          breakLabel="..."
-          breakClassName="page-item"
-          breakLinkClassName="page-link"
-          containerClassName="pagination"
-          activeClassName="active"
-          renderOnZeroPageCount={null}
-          forcePage={page - 1}
-        />
       </Row>
     </Container>
   );

@@ -3,7 +3,7 @@ import api from "../utils/api";
 
 const fetchSearchMovie = ({ keyword, page, genre }) => {
   if (keyword) {
-    api.get(`/search/movie?query=${keyword}&page=${page}`);
+    return api.get(`/search/movie?query=${keyword}&page=${page}`);
   } else if (genre) {
     return api.get(`/discover/movie?with_genres=${genre}&page=${page}`);
   } else {
