@@ -25,7 +25,7 @@ const MoviesPage = () => {
     genre,
   });
 
-  console.log(data, isLoading, isError, error);
+  console.log("씨발 존나 헷갈리네",data);
 
   const handlePageClick = ({ selected }) => {
     setPage(selected + 1);
@@ -52,7 +52,7 @@ const MoviesPage = () => {
             className="d-flex justify-content-center mb-4"
             onChange={handleGenre}
           >
-            <option disabled="true" selected>
+            <option disabled={true} selected>
               장르를 선택하세요
             </option>
             {genreData?.map((genre, index) => (
@@ -70,7 +70,7 @@ const MoviesPage = () => {
         </Col>
         <Col lg={9} xs={12}>
           <Row>
-            {data?.data?.results.map((movie, index) => (
+            {data?.results.map((movie, index) => (
               <Col
                 lg={4}
                 sm={6}
