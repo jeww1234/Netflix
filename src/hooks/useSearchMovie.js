@@ -19,8 +19,9 @@ const fetchSearchMovie = async ({ keyword, page, genre }) => {
     }
     return res.data;
   } else if (genre) {
-    const res = await api.get(`/discover/movie?
-      with_genres=${genre}&page=${page}`);
+    const res = await api.get(
+      `/discover/movie?with_genres=${genre}&page=${page}`
+    );
     return res.data;
   } else {
     const res = await api.get(`/movie/popular?page=${page}`);
