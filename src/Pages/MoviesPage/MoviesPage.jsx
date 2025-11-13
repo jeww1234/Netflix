@@ -6,6 +6,13 @@ import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import MovieCard from "../../Common/MovieCard/MovieCard";
 import ReactPaginate from "react-paginate";
 import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
+import { ClipLoader } from "react-spinners";
+
+const override = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "red",
+};
 //네브바 클릭(키워드x -> popularmovie)
 //서치(키워드와 관련되 키워드)
 
@@ -25,7 +32,7 @@ const MoviesPage = () => {
     genre,
   });
 
-  console.log("씨발 존나 헷갈리네",data);
+  console.log("씨발 존나 헷갈리네", data);
 
   const handlePageClick = ({ selected }) => {
     setPage(selected + 1);
@@ -34,7 +41,25 @@ const MoviesPage = () => {
 
   const { data: genreData } = useMovieGenreQuery();
 
-  if (isLoading) return <h1>Loading.....</h1>;
+  let loading = true;
+  const color = "#ffffff";
+
+  if (isLoading)
+    return (
+      <div
+        className="sweet-loading"
+        style={{ width: "100%", height: "100vh", zIndex: "1" }}
+      >
+        <ClipLoader
+          color={color}
+          loading={loading}
+          cssOverride={override}
+          size={150}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </div>
+    );
   if (isError) return <Alert variant="danger">{error.message}</Alert>;
 
   const handleGenre = (event) => {

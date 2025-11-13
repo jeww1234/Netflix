@@ -1,9 +1,10 @@
 .carousel-container {
-  overflow: visible;
+  overflow: hidden;
   height: 400px;
 }
 .carousel-container ul {
   height: 100%;
+  padding: 1rem 0;
 }
 
 .carousel-container > ul > li {

@@ -2,29 +2,48 @@ import React from "react";
 import "./Banner.style.css";
 import { usePopularMoviesQuery } from "../../../../hooks/usePopularMovie";
 import Alert from "react-bootstrap/Alert";
+import Trailer from "../Trailer/Trailer";
+import { ClipLoader } from "react-spinners";
+
+const override = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "red",
+};
 
 const Banner = () => {
+  let loading = true
+  const color = "#ffffff"
   const { data, isLoading, isError, error } = usePopularMoviesQuery();
   console.log("data", data);
   if (isLoading) {
-    <h1>Loading.....</h1>;
+    return (
+      <div
+        className="sweet-loading"
+        style={{ width: "100%", height: "100vh", zIndex: "1" }}
+      >
+        <ClipLoader
+          color={color}
+          loading={loading}
+          cssOverride={override}
+          size={150}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </div>
+    );
   }
   if (isError) {
-    <Alert variant="danger">{error.message}</Alert>;
+    return <Alert variant="danger">{error.message}</Alert>;
   }
-
-  const backgroundImageUrl = `https://www.themoviedb.org/t/p/w533_and_h300_bestv2${data?.results?.[2]?.poster_path}`;
-
   return (
-    <div
-      style={{
-        backgroundImage:`url(${backgroundImageUrl})`
-      }}
-      className="banner"
-    >
-      <div className="text-white banner-text-area">
-        <h1>{data?.results?.[2]?.title}</h1>
-        <p>{data?.results?.[2]?.overview}</p>
+    <div className="banner">
+      <div className="banner-box">
+        <Trailer movieId={data?.results?.[0]?.id} />
+        <div className="text-white banner-text-area">
+          <h1>{data?.results?.[0]?.title}</h1>
+          <p>{data?.results?.[0]?.overview}</p>
+        </div>
       </div>
     </div>
   );

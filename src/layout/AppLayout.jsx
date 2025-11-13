@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 const AppLayout = () => {
   const [keyword, setKeyword] = useState();
   const navigate = useNavigate();
+  const [expanded, setExpanded] = useState(false);
 
   const searchByKeyword = (event) => {
     event.preventDefault();
@@ -21,9 +22,15 @@ const AppLayout = () => {
 
   return (
     <div className="position-relative">
-      <Navbar expand="lg" className="bg-black position-fixed w-100 nav-area" variant="dark">
+      <Navbar
+        expand="lg"
+        className="bg-black position-fixed w-100 nav-area"
+        variant="dark"
+        expanded={expanded}
+        onToggle={() => setExpanded(!expanded)}
+      >
         <Container fluid>
-          <Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">
             <img
               src="/logo.jpg"
               alt="Logo"
@@ -32,20 +39,20 @@ const AppLayout = () => {
               className="d-inline-block align-top"
             />
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll"/>
+          <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
               className="me-auto my-2 my-lg-0"
               style={{ Height: "100%" }}
               navbarScroll
             >
-              <Link to="/" className="nav-link">
+              <Link to="/" className="nav-link" onClick={() => setExpanded(false)}>
                 Home
               </Link>
-              <Link to="/movies" className="nav-link">
+              <Link to="/movies" className="nav-link" onClick={() => setExpanded(false)}>
                 Movies
               </Link>
-              <Link to="/series" className="nav-link">
+              <Link to="/series" className="nav-link" onClick={() => setExpanded(false)}>
                 Series
               </Link>
             </Nav>

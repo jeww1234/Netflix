@@ -1,38 +1,48 @@
 .banner {
-  height: 85vh;
+  height: 100vh;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
 }
 
 .banner::before {
   content: "";
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
   position: absolute;
   left: 0;
-  height: 85vh;
+  height: 100vh;
   width: 100%;
 }
+.banner-box {
+  position: relative;
+}
 .banner-text-area {
+  position: absolute;
+  bottom: 5rem;
+  left: 0;
   max-width: 45%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 8rem 2rem 0 2rem;
+  justify-content: end;
+  padding: 16rem 2rem 0 2rem;
   margin-left: 8rem;
 }
 .banner-text-area h1 {
-  font-size: 5rem;
+  font-size: 3.5rem;
   color: red;
 }
 .banner-text-area p {
   font-size: 1rem;
-  padding: 0 10px;
+  padding: 0 5px;
 }
 
 .banner-text-area * {
   z-index: 2;
+}
+.sweet-loading{
+  display: flex;
+  align-items: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -58,8 +68,8 @@
     background-repeat: no-repeat;
   }
   .banner-text-area {
-    max-width: 60%;
-    padding: 3rem 1rem 0 1rem;
+    max-width: 70%;
+    padding: 8rem 1rem 0 1rem;
     margin-left: 1rem;
   }
   .banner-text-area h1 {
