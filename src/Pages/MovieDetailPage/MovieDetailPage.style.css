@@ -1,3 +1,7 @@
+p{
+    margin: 0;
+}
+
 .detail-movie-box {
   display: flex;
   justify-content: center;

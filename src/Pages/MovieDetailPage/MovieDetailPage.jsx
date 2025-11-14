@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useMovieDetailQuery } from "../../hooks/useMovieDetail";
 import { ClipLoader } from "react-spinners";
 import Trailer from "../HomePage/components/Trailer/Trailer";
+import Review from "./component/Review";
 
 const override = {
   display: "block",
@@ -60,12 +61,16 @@ const MovieDetailPage = () => {
           <p>{detail.release_date}</p>
           <p>이용가</p>
           <p>{detail.vote_average}</p>
-          <p style={{width:"70%"}}>{detail.overview}</p>
+          <p style={{ width: "70%" }}>{detail.overview}</p>
         </div>
       </div>
       <div>
-        <div className="detail-trailerBox"><Trailer movieId={id}/></div>
-        <p>리뷰</p>
+        <div className="detail-trailerBox">
+          <Trailer movieId={id} />
+        </div>
+        <div>
+          <Review id={id} />
+        </div>
         <p>관련 영화</p>
       </div>
     </div>
