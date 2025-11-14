@@ -14,7 +14,7 @@ const MovieDetailPage = () => {
   const { id } = useParams();
   const { data: detail, isLoading, isError, error } = useMovieDetailQuery(id);
 
-  console.log("ddddddttttttt",detail)
+  console.log("ddddddttttttt", detail);
 
   let loading = true;
   const color = "#ffffff";
@@ -39,22 +39,30 @@ const MovieDetailPage = () => {
   if (!detail) return <div>로딩 중...</div>;
 
   return (
-    <div className="detail-movie-container">
-      <div className="detail-movie-img">
-        <img
-          src={`https://image.tmdb.org/t/p/w500${detail.poster_path}`}
-          alt={detail.title}
-        />
+    <div>
+      <div className="detail-movie-container">
+        <div className="detail-movie-img">
+          <img
+            src={`https://image.tmdb.org/t/p/w500${detail.poster_path}`}
+            alt={detail.title}
+          />
+        </div>
+        <div className="detail-movie-info">
+          <div className="detail-genre">
+            {detail?.genres?.map((id) => (
+              <p>{id.name}</p>
+            ))}
+          </div>
+          <h1>{detail?.title}</h1>
+          <p>{detail.tagline}</p>
+          <p>{detail.runtime}분</p>
+          <p>{detail.release_date}</p>
+          <p>이용가</p>
+          <p>{detail.vote_average}</p>
+          <p>{detail.overview}</p>
+        </div>
       </div>
-      <div className="detail-movie-info">
-        <h1>{detail.title}</h1>
-        <p>카테고리</p>
-        <p>부제목?</p>
-        <p>상영시간</p>
-        <p>개봉일</p>
-        <p>이용가</p>
-        <p>평점</p>
-        <p>설명</p>
+      <div>
         <p>트레일러</p>
         <p>리뷰</p>
         <p>관련 영화</p>

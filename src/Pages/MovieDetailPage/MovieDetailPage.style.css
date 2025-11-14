@@ -1,11 +1,22 @@
 .detail-movie-container {
   display: flex;
+  justify-content: center;
 }
 .detail-movie-img {
-  flex: 4;
+  display: flex;
+  justify-content: center;
   width: 100%;
+  height: 100%;
+  padding: 2rem;
 }
 .detail-movie-info {
-  flex: 6;
   width: 100%;
+  padding-top: 4rem;
+  color: white  ;
+}
+.detail-genre{
+    display: flex;
+}
+.detail-genre p{
+    padding: 0.5rem;
 }
