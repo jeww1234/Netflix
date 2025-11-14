@@ -1,0 +1,11 @@
+.detail-movie-container {
+  display: flex;
+}
+.detail-movie-img {
+  flex: 4;
+  width: 100%;
+}
+.detail-movie-info {
+  flex: 6;
+  width: 100%;
+}
