@@ -1,0 +1,7 @@
+.review-box{
+    border: 1px solid rgb(229, 9, 20);
+    color: white;
+    padding: 1rem;
+    border-radius: 16px;
+    margin: 1rem;
+}

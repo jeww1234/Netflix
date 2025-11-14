@@ -1,6 +1,6 @@
 import React from "react";
 import { useMovieReviewQuery } from "../../../hooks/useMovieReview";
-
+import "./Review.style.css"
 const Review = ({ id }) => {
   const {
     data: review,
@@ -15,9 +15,9 @@ const Review = ({ id }) => {
   return (
     <div>
       {review.results.map((review) => (
-        <div>
+        <div className="review-box">
           <h3>{review.author}</h3>
-          <h3>{review.content}</h3>
+          <p>{review.content}</p>
         </div>
       ))}
     </div>
