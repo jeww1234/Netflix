@@ -1,6 +1,10 @@
 .moviePage-area {
   padding-top: 100px;
 }
+.moviePage-option-area{
+  display: flex;
+  flex-direction: column;
+}
 .pagination {
   margin-bottom: 0;
 }

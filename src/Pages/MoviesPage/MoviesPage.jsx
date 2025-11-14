@@ -25,14 +25,15 @@ const MoviesPage = () => {
   const [page, setPage] = useState(1);
   const keyword = query.get("q");
   const [genre, setGenre] = useState("");
+  const [sortBy, setSortBy] = useState("");
+
 
   const { data, isLoading, isError, error } = useSearchMovieQuery({
     keyword,
     page,
     genre,
+    sortBy,
   });
-
-  console.log("씨발 존나 헷갈리네", data);
 
   const handlePageClick = ({ selected }) => {
     setPage(selected + 1);
@@ -68,30 +69,42 @@ const MoviesPage = () => {
     console.log("Gggg", event.target.genre);
   };
 
+  const handleSort =(event)=>{
+    setSortBy(event.target.value)
+    setPage(1)
+  }
+
   return (
     <Container>
       <Row className="moviePage-area">
         <Col lg={3} xs={12}>
-          <Form.Select
-            aria-label="장르 선택"
-            className="d-flex justify-content-center mb-4"
-            onChange={handleGenre}
-          >
-            <option disabled={true} selected>
-              장르를 선택하세요
-            </option>
-            {genreData?.map((genre, index) => (
-              <option value={genre.id} key={index}>
-                {genre.name}
-              </option>
-            ))}
-          </Form.Select>
-          {/* tmdb에서 제공하는 장르를를 map한다
-          장르의 상태를 저장하는 스테이트 생성
-          장르를 클릭하면 그 값으로 상태변경
-          변경된 상태를 url에 추가(tmdb의 문법?에 맞게)
-          변경된 url로 다시 패치
-           */}
+          <Row className="moviePage-option-area">
+            <Col>
+              <Form.Select
+                aria-label="장르 선택"
+                className="d-flex justify-content-center mb-4"
+                onChange={handleGenre}
+              >
+                <option disabled={true} selected>
+                  장르를 선택하세요
+                </option>
+                {genreData?.map((genre, index) => (
+                  <option value={genre.id} key={index}>
+                    {genre.name}
+                  </option>
+                ))}
+              </Form.Select>
+            </Col>
+            <Col>
+              <Form.Select aria-label="장르 선택" onChange={handleSort} value={sortBy}>
+                <option disabled={true} value="">
+                  정렬
+                </option>
+                <option value="vote_average.desc">평점 높은 순</option>
+                <option value="release_date.desc">최신 개봉 순</option>
+              </Form.Select>
+            </Col>
+          </Row>
         </Col>
         <Col lg={9} xs={12}>
           <Row>
@@ -114,7 +127,7 @@ const MoviesPage = () => {
               onPageChange={handlePageClick}
               pageRangeDisplayed={3}
               marginPagesDisplayed={1}
-              pageCount={data?.total_pages} //전체 페이지
+              pageCount={500} //전체 페이지
               previousLabel="< previous"
               pageClassName="page-item"
               pageLinkClassName="page-link"

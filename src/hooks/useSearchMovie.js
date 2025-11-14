@@ -1,38 +1,47 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "../utils/api";
 
-const fetchSearchMovie = async ({ keyword, page, genre }) => {
+const fetchSearchMovie = async ({ keyword, page, genre, sortBy }) => {
   if (keyword?.trim()) {
     const res = await api.get(`/search/movie?query=${keyword}&page=${page}`);
-    console.log("response", res);
+    let results = res.data.results;
+
+    // 클라이언트 정렬
+    if (sortBy === "vote_average.desc") {
+      results = results.sort((a, b) => b.vote_average - a.vote_average);
+    } else if (sortBy === "release_date.desc") {
+      results = results.sort(
+        (a, b) => new Date(b.release_date) - new Date(a.release_date)
+      );
+    }
+
     if (genre) {
-      const filtered = res.data.results.filter((movie) =>
+      results = results.filter((movie) =>
         movie.genre_ids.includes(Number(genre))
       );
-      console.log("filtered", filtered);
-      return {
-        ...res.data,
-        results: filtered,
-        total_pages: 1, // ✅ 필터링된 결과 기준으로 페이지 수 고정
-        total_results: filtered.length,
-      };
     }
-    return res.data;
-  } else if (genre) {
-    const res = await api.get(
-      `/discover/movie?with_genres=${genre}&page=${page}`
-    );
-    return res.data;
-  } else {
-    const res = await api.get(`/movie/popular?page=${page}`);
-    return res.data;
+
+    return {
+      ...res.data,
+      results,
+      total_pages: 1,
+      total_results: results.length,
+    };
   }
+
+  // discover API (서버 정렬 가능)
+  const genreParam = genre ? `&with_genres=${genre}` : "";
+  const sortParam = sortBy ? `&sort_by=${sortBy}` : "";
+  const res = await api.get(
+    `/discover/movie?page=${page}${genreParam}${sortParam}`
+  );
+  return res.data;
 };
 
-export const useSearchMovieQuery = ({ keyword, page, genre }) => {
+export const useSearchMovieQuery = ({ keyword, page, genre, sortBy }) => {
   return useQuery({
-    queryKey: ["movie-search", { keyword, page, genre }],
-    queryFn: () => fetchSearchMovie({ keyword, page, genre }),
+    queryKey: ["movie-search", { keyword, page, genre, sortBy }],
+    queryFn: () => fetchSearchMovie({ keyword, page, genre, sortBy }),
     select: (result) => result,
   });
 };

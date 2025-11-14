@@ -42,8 +42,9 @@ const MovieCard = ({ movie }) => {
           ))}
         </div>
         <div>
-          <div>평점 {movie.vote_average}</div>
-          <div>인기도 {movie.popularity}</div>
+          <div>평점 {movie?.vote_average}</div>
+          <div>인기도 {movie?.popularity}</div>
+          <div>개봉일 {movie?.release_date}</div>
           <div>{movie.adult ? "18세 이용가" : "전체 이용가"}</div>
         </div>
       </div>
