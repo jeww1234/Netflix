@@ -1,5 +1,5 @@
 import React from "react";
-import { useMovieReviewQuery } from "../../../hooks/useMovieReview";
+import { useMovieReviewQuery } from "../../../../hooks/useMovieReview";
 import "./Review.style.css"
 const Review = ({ id }) => {
   const {

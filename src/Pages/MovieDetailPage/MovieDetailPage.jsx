@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import { useMovieDetailQuery } from "../../hooks/useMovieDetail";
 import { ClipLoader } from "react-spinners";
 import Trailer from "../HomePage/components/Trailer/Trailer";
-import Review from "./component/Review";
+import Review from "./component/Review/Review";
+import Similar from "./component/Similar/Similar";
 
 const override = {
   display: "block",
@@ -71,7 +72,9 @@ const MovieDetailPage = () => {
         <div>
           <Review id={id} />
         </div>
-        <p>관련 영화</p>
+        <div>
+          <Similar id={id}/>
+        </div>
       </div>
     </div>
   );
