@@ -1,13 +1,30 @@
 .moviePage-card2 {
   box-sizing: border-box;
   height: 400px;
-  width: 20%;
   display: flex;
   align-items: center;
   padding: 1rem;
   margin: 0;
 }
 
-.similar-box{
-    padding: 1rem 2rem;
+.similar-box {
+  padding: 1rem 2rem;
 }
+
+@media screen and (max-width: 996PX) {
+  .moviePage-card2 {
+    height: 50vh;
+  }
+}
+@media screen and (max-width: 768px) {
+  .moviePage-card2 {
+    height: 42vh;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .moviePage-card2 {
+    height: 500px;
+  }
+}
+

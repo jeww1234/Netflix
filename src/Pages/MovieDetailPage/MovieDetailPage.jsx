@@ -62,7 +62,7 @@ const MovieDetailPage = () => {
           <p>{detail.release_date}</p>
           <p>이용가</p>
           <p>{detail.vote_average}</p>
-          <p style={{ width: "70%" }}>{detail.overview}</p>
+          <p>{detail.overview}</p>
         </div>
       </div>
       <div>

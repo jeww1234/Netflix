@@ -1,5 +1,5 @@
-p{
-    margin: 0;
+p {
+  margin: 0;
 }
 
 .detail-movie-box {
@@ -12,13 +12,16 @@ p{
   display: flex;
   justify-content: end;
   width: 100%;
-  height: 100%;
-  padding: 2rem;
+  height: 50%;
+  padding: 4rem 2rem;
+}
+.detail-movie-img img {
+  width: 80%;
 }
 .detail-movie-info {
   flex: 5;
   width: 100%;
-  padding: 4rem 0 4rem 0;
+  padding: 4rem 2rem 4rem 0;
   color: white;
 }
 .detail-genre {
@@ -31,4 +34,33 @@ p{
   margin: 0 auto;
   width: 85%;
   max-height: 800px;
+}
+
+@media screen and (max-width: 996px) {
+  .detail-movie-img img {
+    width: 100%;
+    padding-right: 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  p {
+    font-size: 2vw;
+    justify-content: center;
+  }
+  .detail-trailerBox {
+    margin: 0 auto;
+    width: 85%;
+    max-height: 700px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  p {
+    font-size: 1.5vw;
+    justify-content: center;
+  }
 }

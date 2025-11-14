@@ -1,7 +1,7 @@
 import React from "react";
 import "./Similar.style.css";
 import { useMovieSimilarQuery } from "../../../../hooks/useMovieSimilar";
-import MovieCard from "../../../../Common/MovieCard/MovieCard";
+import DetailMovieCard from "../../../../Common//DetailMovieCard//DetailMovieCard";
 import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
@@ -22,12 +22,12 @@ const Similar = ({ id }) => {
         {similar?.results.map((movie, index) => (
           <Col
             lg={3}
+            md={4}
             sm={6}
-            xs={12}
             key={index}
-            className="p-1 moviePage-card2"
+            className="p-3 moviePage-card2"
           >
-            {<MovieCard movie={movie} />}
+            {<DetailMovieCard movie={movie} />}
           </Col>
         ))}
       </Row>
