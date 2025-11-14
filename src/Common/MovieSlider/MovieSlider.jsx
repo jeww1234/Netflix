@@ -9,7 +9,7 @@ const MovieSlider = ({ movies, title, responsive }) => {
   const isMobile = width <= 576;
 
   return (
-    <div>
+    <div className="movieSliderBox">
       <h3 className="text-white my-4 ps-3">{title}</h3>
       <Carousel
         infinite={true}

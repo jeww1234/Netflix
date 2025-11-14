@@ -3,6 +3,7 @@ import "./MovieDetailPage.style.css";
 import { useParams } from "react-router-dom";
 import { useMovieDetailQuery } from "../../hooks/useMovieDetail";
 import { ClipLoader } from "react-spinners";
+import Trailer from "../HomePage/components/Trailer/Trailer";
 
 const override = {
   display: "block",
@@ -39,8 +40,8 @@ const MovieDetailPage = () => {
   if (!detail) return <div>로딩 중...</div>;
 
   return (
-    <div>
-      <div className="detail-movie-container">
+    <div className="detail-movie-container">
+      <div className="detail-movie-box">
         <div className="detail-movie-img">
           <img
             src={`https://image.tmdb.org/t/p/w500${detail.poster_path}`}
@@ -59,11 +60,11 @@ const MovieDetailPage = () => {
           <p>{detail.release_date}</p>
           <p>이용가</p>
           <p>{detail.vote_average}</p>
-          <p>{detail.overview}</p>
+          <p style={{width:"70%"}}>{detail.overview}</p>
         </div>
       </div>
       <div>
-        <p>트레일러</p>
+        <div className="detail-trailerBox"><Trailer movieId={id}/></div>
         <p>리뷰</p>
         <p>관련 영화</p>
       </div>

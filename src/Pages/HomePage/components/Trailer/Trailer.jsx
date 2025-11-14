@@ -42,7 +42,7 @@ const Trailer = ({ movieId }) => {
   console.log("Found trailer:", trailer);
 
   return (
-    <div style={{ width: "100%", height: "100vh", zIndex: "1" }}>
+    <div className="iframe-box">
       <iframe
         width="100%"
         height="100%"
